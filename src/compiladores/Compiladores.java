@@ -4,21 +4,68 @@
  */
 package compiladores;
 
+import java.io.StringReader;
+
 /**
- *
+ *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
  * @author kevyn
- */
+ */ 
 public class Compiladores {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //analizadores("src/json/", "Lexer.jflex", "Parser.jcup");
+        
+        
+        String entrada = "{\n" +
+                "\"Titulo\":\"titulo pie\",\n" +
+                "\"variable1\":4.5,\n" +
+                "\"Titulo2\":\"titulo pie2\",\n" +
+                "\"variable2\":1.5\n" +
+                "}";
+        //System.out.println(entrada);
+        //String prueba = "{";
+        //\"Grafica1\"
+        
+        
+        analizar(entrada);
+        System.out.println(entrada);
+        /*
         Ventana miVentana = new Ventana();
         miVentana.setVisible(true);
         miVentana.setResizable(false);
         miVentana.setLocationRelativeTo(null);
+*/
         // TODO code application logic here
     }
+    
+    public static void analizadores(String ruta, String jflexFile, String cupFile){
+        try {
+            String opcionesJflex[] =  {ruta+jflexFile,"-d",ruta};
+            jflex.Main.generate(opcionesJflex);
+
+            String opcionesCup[] =  {"-destdir", ruta,"-parser","Parser",ruta+cupFile};
+            java_cup.Main.main(opcionesCup);
+            
+        } catch (Exception e) {
+            System.out.println("No se ha podido generar los analizadores");
+            System.out.println(e);
+        }
+    }
+    
+        // Realizar Analisis
+    public static void analizar (String entrada){
+        try {
+            json.Lexer lexer = new json.Lexer(new StringReader(entrada)); 
+            json.Parser parser = new json.Parser(lexer);
+            parser.parse();
+        } catch (Exception e) {
+            System.out.println("Error fatal en compilación de entrada.");
+            System.out.println(e);
+        } 
+    } 
     
 }

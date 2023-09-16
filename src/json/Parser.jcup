@@ -1,0 +1,65 @@
+// ------------  Paquete e importaciones ------------
+package json;
+
+import java_cup.runtime.*;
+
+
+//------> Codigo para el parser
+//------> Declaracion de variables, funciones y funciones de error
+
+parser code 
+{:
+    public String resultado = ""; 
+
+    public void syntax_error(Symbol s)
+    {
+            System.err.println("Error Sintactico: "+ s.value + " - Fila: " + s.right + " - Columna: " + s.left + ". Recuperado" );
+    }
+
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {
+            System.err.println("Error Sintactico: "+ s.value + " - Fila: " + s.right + " - Columna: " + s.left + ". Sin recuperacion." );
+    }
+
+:}
+
+
+//------> Codigo para las acciones gramaticales (no tocar)
+action code
+{:  :}
+
+
+//------> Declaración de terminales
+terminal String ABRIR_LL;
+terminal String CERRAR_LL;
+terminal String COMA;
+terminal String DOS_PUNTOS;
+terminal String DECIMAL;
+terminal String PUNTO;
+terminal String CARACTER;
+terminal String COMILLAS;
+terminal String SALTO;
+
+//------> Declaración de no terminales
+non terminal inicio;
+non terminal object;
+non terminal cuerpo;
+non terminal texto;
+
+//------> Definir Simbolo Inicial
+start with inicio; 
+
+
+// ------------>  Producciones  <------------
+
+inicio ::= object
+;
+object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL
+;
+texto ::= COMILLAS CARACTER COMILLAS
+;
+cuerpo ::= texto DOS_PUNTOS texto COMA SALTO cuerpo
+        | texto DOS_PUNTOS DECIMAL COMA SALTO cuerpo
+        | texto DOS_PUNTOS texto
+        | texto DOS_PUNTOS DECIMAL
+;
