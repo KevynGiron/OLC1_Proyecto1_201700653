@@ -34,6 +34,9 @@ caracter = [A-Za-z0-9\s]+
 "."     { return new Symbol(sym.PUNTO, yycolumn, yyline, yytext()); }
 "\""    { return new Symbol(sym.COMILLAS, yycolumn, yyline, yytext()); }
 "\n"    { return new Symbol(sym.SALTO, yycolumn, yyline, yytext()); }
+"/*"    { return new Symbol(sym.ABRIR_COM, yycolumn, yyline, yytext()); }
+"*/"    { return new Symbol(sym.CERRAR_COM, yycolumn, yyline, yytext()); }
+"ε"     { return new Symbol(sym.EPSILON, yycolumn, yyline, yytext()); }
 
 {decimal} { return new Symbol(sym.DECIMAL, yycolumn, yyline, yytext()); }
 {caracter} { return new Symbol(sym.CARACTER, yycolumn, yyline, yytext()); }

@@ -31,8 +31,12 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\010\000\002\002\004\000\002\002\003\000\002\003" +
-    "\007\000\002\005\005\000\002\004\010\000\002\004\010" +
+    "\000\025\000\002\002\004\000\002\002\003\000\002\006" +
+    "\005\000\002\007\003\000\002\007\005\000\002\007\004" +
+    "\000\002\007\005\000\002\007\003\000\002\003\011\000" +
+    "\002\003\007\000\002\003\011\000\002\003\012\000\002" +
+    "\003\010\000\002\003\004\000\002\003\005\000\002\003" +
+    "\003\000\002\005\005\000\002\004\010\000\002\004\010" +
     "\000\002\004\005\000\002\004\005" });
 
   /** Access to production table. */
@@ -41,18 +45,30 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\026\000\004\004\004\001\002\000\004\014\010\001" +
-    "\002\000\004\002\000\001\002\000\004\002\007\001\002" +
-    "\000\004\002\001\001\002\000\004\013\013\001\002\000" +
-    "\004\007\020\001\002\000\004\014\016\001\002\000\004" +
-    "\012\014\001\002\000\004\013\015\001\002\000\010\006" +
-    "\ufffe\007\ufffe\014\ufffe\001\002\000\004\005\017\001\002" +
-    "\000\004\002\uffff\001\002\000\006\010\022\013\013\001" +
-    "\002\000\006\006\026\014\ufffb\001\002\000\006\006\023" +
-    "\014\ufffa\001\002\000\004\014\024\001\002\000\004\013" +
-    "\013\001\002\000\004\014\ufffc\001\002\000\004\014\027" +
-    "\001\002\000\004\013\013\001\002\000\004\014\ufffd\001" +
-    "\002" });
+    "\000\052\000\006\004\004\015\010\001\002\000\004\014" +
+    "\026\001\002\000\012\002\ufff2\004\004\014\024\015\010" +
+    "\001\002\000\004\002\000\001\002\000\004\002\022\001" +
+    "\002\000\010\012\013\014\014\017\011\001\002\000\004" +
+    "\016\ufffa\001\002\000\004\016\021\001\002\000\006\014" +
+    "\020\016\ufffe\001\002\000\004\012\015\001\002\000\010" +
+    "\012\013\014\017\017\011\001\002\000\004\016\ufffd\001" +
+    "\002\000\006\012\015\016\ufffb\001\002\000\004\016\ufffc" +
+    "\001\002\000\012\002\uffff\004\uffff\014\uffff\015\uffff\001" +
+    "\002\000\004\002\001\001\002\000\004\002\ufff4\001\002" +
+    "\000\006\004\004\015\010\001\002\000\004\002\ufff3\001" +
+    "\002\000\004\013\031\001\002\000\004\007\044\001\002" +
+    "\000\004\014\034\001\002\000\004\012\032\001\002\000" +
+    "\004\013\033\001\002\000\010\006\ufff1\007\ufff1\014\ufff1" +
+    "\001\002\000\004\005\035\001\002\000\010\002\ufff8\014" +
+    "\037\015\010\001\002\000\012\002\ufff5\004\004\014\042" +
+    "\015\010\001\002\000\006\004\004\015\010\001\002\000" +
+    "\004\002\ufff9\001\002\000\004\002\ufff7\001\002\000\006" +
+    "\004\004\015\010\001\002\000\004\002\ufff6\001\002\000" +
+    "\006\010\046\013\031\001\002\000\006\006\052\014\uffee" +
+    "\001\002\000\006\006\047\014\uffed\001\002\000\004\014" +
+    "\050\001\002\000\004\013\031\001\002\000\004\014\uffef" +
+    "\001\002\000\004\014\053\001\002\000\004\013\031\001" +
+    "\002\000\004\014\ufff0\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -60,15 +76,23 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\026\000\006\002\005\003\004\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\006\004\011\005\010\001\001\000\002\001\001\000" +
+    "\000\052\000\010\002\006\003\005\006\004\001\001\000" +
+    "\002\001\001\000\006\003\022\006\004\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\007\011\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\005" +
-    "\020\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\006\004\024\005\010\001\001\000\002\001" +
-    "\001\000\002\001\001\000\006\004\027\005\010\001\001" +
-    "\000\002\001\001" });
+    "\001\001\000\004\007\015\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\003\024\006\004\001" +
+    "\001\000\002\001\001\000\006\004\027\005\026\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\006\035\001\001\000\006\003\040\006\004\001\001\000" +
+    "\006\003\037\006\004\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\003\042\006\004\001\001\000\002\001" +
+    "\001\000\004\005\044\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\004\050\005\026\001" +
+    "\001\000\002\001\001\000\002\001\001\000\006\004\053" +
+    "\005\026\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -171,7 +195,70 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL 
+          case 2: // comentario ::= ABRIR_COM texto_comentario CERRAR_COM 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("comentario",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 3: // texto_comentario ::= CARACTER 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("texto_comentario",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 4: // texto_comentario ::= SALTO CARACTER texto_comentario 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("texto_comentario",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // texto_comentario ::= CARACTER SALTO 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("texto_comentario",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // texto_comentario ::= SALTO CARACTER SALTO 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("texto_comentario",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // texto_comentario ::= EPSILON 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("texto_comentario",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL SALTO object 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL 
             {
               Object RESULT =null;
 
@@ -180,7 +267,61 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // texto ::= COMILLAS CARACTER COMILLAS 
+          case 10: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL comentario object 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL comentario SALTO object 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-7)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 12: // object ::= ABRIR_LL SALTO cuerpo SALTO CERRAR_LL comentario 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 13: // object ::= comentario object 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 14: // object ::= comentario SALTO object 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 15: // object ::= comentario 
+            {
+              Object RESULT =null;
+
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("object",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 16: // texto ::= COMILLAS CARACTER COMILLAS 
             {
               Object RESULT =null;
 
@@ -189,7 +330,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // cuerpo ::= texto DOS_PUNTOS texto COMA SALTO cuerpo 
+          case 17: // cuerpo ::= texto DOS_PUNTOS texto COMA SALTO cuerpo 
             {
               Object RESULT =null;
 
@@ -198,7 +339,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // cuerpo ::= texto DOS_PUNTOS DECIMAL COMA SALTO cuerpo 
+          case 18: // cuerpo ::= texto DOS_PUNTOS DECIMAL COMA SALTO cuerpo 
             {
               Object RESULT =null;
 
@@ -207,7 +348,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // cuerpo ::= texto DOS_PUNTOS texto 
+          case 19: // cuerpo ::= texto DOS_PUNTOS texto 
             {
               Object RESULT =null;
 
@@ -216,7 +357,7 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // cuerpo ::= texto DOS_PUNTOS DECIMAL 
+          case 20: // cuerpo ::= texto DOS_PUNTOS DECIMAL 
             {
               Object RESULT =null;
 

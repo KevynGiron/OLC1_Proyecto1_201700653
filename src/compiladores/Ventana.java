@@ -4,7 +4,7 @@
  */
 package compiladores;
 
-/**
+ /**
  *
  * @author kevyn
  */
@@ -47,13 +47,15 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Analizador");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("json");
 
         jLabel3.setText("Entrada");
 
         jLabel4.setText("Salida");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setWrapStyleWord(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -63,6 +65,11 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea2);
 
         jButton1.setText("Ejecutar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Archivo");
         jMenuBar1.add(jMenu1);
@@ -70,11 +77,20 @@ public class Ventana extends javax.swing.JFrame {
         jMenu2.setText("Analizador");
 
         jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+        jRadioButtonMenuItem1.setText("JSON");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jRadioButtonMenuItem1);
 
-        jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("jRadioButtonMenuItem2");
+        jRadioButtonMenuItem2.setText("PyChar");
+        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jRadioButtonMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -101,18 +117,18 @@ public class Ventana extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(179, 179, 179)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
+                                .addComponent(jButton1)))
+                        .addGap(0, 122, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 22, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,13 +144,44 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        /*
+        String s = jTextArea1.getText().replaceAll("[\\t\\r\\f]+", "");
+        String x = s.replaceAll("\n+", "\n");
+        System.out.println(x.replaceAll(": ", ":"));
+        compiladores.Compiladores.analizar(x.replaceAll(": ", ":"));
+        */
+        
+        String s = jTextArea1.getText();
+        
+        Compiladores.analizar2(s);
+        System.out.println(s);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        if (jRadioButtonMenuItem1.isSelected()){
+            jRadioButtonMenuItem2.setSelected(false);
+            jLabel2.setText("Json");
+        }
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        if (jRadioButtonMenuItem2.isSelected()){
+            jRadioButtonMenuItem1.setSelected(false);
+            jLabel2.setText("Pychar");
+        }
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

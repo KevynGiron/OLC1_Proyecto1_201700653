@@ -12,12 +12,15 @@ public class sym {
   public static final int DECIMAL = 6;
   public static final int COMA = 4;
   public static final int PUNTO = 7;
+  public static final int EPSILON = 13;
   public static final int EOF = 0;
   public static final int ABRIR_LL = 2;
   public static final int COMILLAS = 9;
   public static final int SALTO = 10;
   public static final int error = 1;
   public static final int DOS_PUNTOS = 5;
+  public static final int ABRIR_COM = 11;
+  public static final int CERRAR_COM = 12;
   public static final int CARACTER = 8;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -30,7 +33,10 @@ public class sym {
   "PUNTO",
   "CARACTER",
   "COMILLAS",
-  "SALTO"
+  "SALTO",
+  "ABRIR_COM",
+  "CERRAR_COM",
+  "EPSILON"
   };
 }
 

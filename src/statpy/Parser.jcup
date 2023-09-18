@@ -31,11 +31,50 @@ action code
 
 //------> Declaración de terminales
 terminal String ENTERO;
-
+terminal String PARENTESIS_ABIERTO;
+terminal String PARENTESIS_CERRADO;
+terminal String COMILLAS;
+terminal String PUNTO_COMA;
+terminal String PR_CONSOLE;
+terminal String CARACTER;
+terminal String SALTO;
+terminal String DOBLE_BARRA;
+terminal String PR_INT;
+terminal String PR_DOUBLE;
+terminal String PR_CHAR;
+terminal String PR_BOOL;
+terminal String PR_STRING;
+terminal String PR_MAIN;
+terminal String PR_IF;
+terminal String PR_SWITCH;
+terminal String PR_CASE;
+terminal String PR_BRAKE;
+terminal String PR_DEFAULT;
+terminal String PR_FOR;
+terminal String PR_WHILE;
+terminal String PR_DO;
+terminal String SUMA;
+terminal String RESTA;
+terminal String MULTIPLICACION;
+terminal String DIVISION;
+terminal String MAYOR;
+terminal String MENOR;
+terminal String IGUAL;
+terminal String MENOR_IGUAL;
+terminal String MAYOR_IGUAL;
+terminal String DIFERENTE;
+terminal String AND;
+terminal String OR;
+terminal String NOT;
 
 //------> Declaración de no terminales
 non terminal inicio;
-
+non terminal imprimir;
+non terminal texto;
+non terminal numero;
+non terminal cuerpo;
+non terminal funciones;
+non terminal comentario_l;
 
 //------> Definir Simbolo Inicial
 start with inicio; 
@@ -43,5 +82,23 @@ start with inicio;
 
 // ------------>  Producciones  <------------
 
-inicio ::= ENTERO
+inicio ::= cuerpo
+;
+
+cuerpo ::= funciones
+;
+
+
+funciones ::= imprimir
+            | comentario_l
+            | comentario_l SALTO
+;
+
+imprimir ::= PR_CONSOLE PARENTESIS_ABIERTO texto PARENTESIS_CERRADO PUNTO_COMA
+;
+
+texto ::= COMILLAS CARACTER COMILLAS
+;
+
+comentario_l ::= DOBLE_BARRA CARACTER
 ;
